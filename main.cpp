@@ -81,8 +81,6 @@ int main(int argc, char **argv) {
     glClearColor(ClearColor.r, ClearColor.g, ClearColor.b, ClearColor.a);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
     // draw here
     /*
      *
@@ -92,6 +90,7 @@ int main(int argc, char **argv) {
      */
     // end draw
 
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     glfwSwapBuffers(window);
   }
 
