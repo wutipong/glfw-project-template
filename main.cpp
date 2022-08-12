@@ -3,9 +3,8 @@
 #include <cstdio>
 #include <glm/glm.hpp>
 #include <imgui.h>
-
-#include "imgui_impl/imgui_impl_glfw.h"
-#include "imgui_impl/imgui_impl_opengl3.h"
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
 
 constexpr int WindowWidth = 800;
 constexpr int WindowHeight = 600;

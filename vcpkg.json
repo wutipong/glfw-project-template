@@ -3,9 +3,15 @@
   "version-string": "0.1.0-dev",
   "dependencies": [
     "glfw3",
-    "imgui",
     "opengl",
     "glew",
-    "glm"
+    "glm",
+    {
+      "name": "imgui",
+      "features": [
+        "opengl3-binding",
+        "glfw-binding"
+      ]
+    }
   ]
 }

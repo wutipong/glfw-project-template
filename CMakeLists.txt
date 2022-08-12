@@ -8,18 +8,14 @@ project(glfw-project-template)
 
 # add the executable
 add_executable(glfw-project-template 
-	"main.cpp" 
-	"imgui_impl/imgui_impl_glfw.h" 
-	"imgui_impl/imgui_impl_glfw.cpp"
-	"imgui_impl/imgui_impl_opengl3.h" 
-	"imgui_impl/imgui_impl_opengl3.cpp")
+	"main.cpp")
 
 find_package(glfw3 CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
 find_package(glew CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
 
-target_link_libraries(glfw-project-template PRIVATE imgui::imgui glfw GLEW::GLEW glm)
+target_link_libraries(glfw-project-template PRIVATE imgui::imgui glfw GLEW::GLEW)
 
 target_compile_features(glfw-project-template PRIVATE cxx_std_17)
 
