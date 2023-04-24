@@ -1,8 +1,7 @@
 #pragma once
-#include <GL/glew.h>
-#include <glm/glm.hpp>
 
 namespace Scene {
+constexpr bool HasUI = false;
 
 struct FrameContext {
   const int windowWidth;

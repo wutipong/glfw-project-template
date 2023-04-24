@@ -1,6 +1,8 @@
 #include "scene.hpp"
 
 #include <array>
+#include <GL/glew.h>
+#include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <imgui.h>
 #include <vector>

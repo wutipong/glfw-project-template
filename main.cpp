@@ -56,15 +56,17 @@ int main(int argc, char **argv) {
 
   PrintDeviceInformation();
 
-  IMGUI_CHECKVERSION();
-  ImGui::CreateContext();
-  ImGuiIO &io = ImGui::GetIO();
-  (void)io;
+  if (Scene::HasUI) {
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO &io = ImGui::GetIO();
+    (void)io;
 
-  ImGui::StyleColorsDark();
+    ImGui::StyleColorsDark();
 
-  ImGui_ImplGlfw_InitForOpenGL(window, true);
-  ImGui_ImplOpenGL3_Init(GlslVersion);
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(GlslVersion);
+  }
 
   Scene::Init();
 
@@ -73,14 +75,16 @@ int main(int argc, char **argv) {
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
 
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
+    if (Scene::HasUI) {
+      ImGui_ImplOpenGL3_NewFrame();
+      ImGui_ImplGlfw_NewFrame();
+      ImGui::NewFrame();
 
-    Scene::DoUI();
+      Scene::DoUI();
 
-    ImGui::EndFrame();
-    ImGui::Render();
+      ImGui::EndFrame();
+      ImGui::Render();
+    }
 
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
@@ -94,15 +98,20 @@ int main(int argc, char **argv) {
 
     lastFrame = now;
 
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    if (Scene::HasUI) {
+      ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    }
+
     glfwSwapBuffers(window);
   }
 
   Scene::CleanUp();
 
-  ImGui_ImplOpenGL3_Shutdown();
-  ImGui_ImplGlfw_Shutdown();
-  ImGui::DestroyContext();
+  if (Scene::HasUI) {
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+  }
 
   glfwDestroyWindow(window);
   glfwTerminate();
