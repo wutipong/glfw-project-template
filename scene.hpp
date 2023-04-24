@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Scene {
-constexpr bool HasUI = false;
+constexpr bool HasUI = true;
 
 struct FrameContext {
   const int windowWidth;
